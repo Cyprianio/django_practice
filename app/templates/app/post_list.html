@@ -5,6 +5,16 @@
             <title>Aplikacja</title>
         </head>
         <body>
-            <p>Witaj w aplikacji</p>
+            <div>
+                <h1>Witaj w aplikacji</h1>
+                <h2>Poniżej będą pojawiać się nowe jej możliwości</h2>
+            </div>
+            {% for post in posts %}
+            <div>
+                <p>Opublikowany: {{post.publish_date}}</p>
+                <h3><a href="">{{ post.title }}</a></h3>
+                <em>{{ post.text|linebreaksbr }}</em>
+            </div>
+            {% endfor %}
         </body>
     </html>
