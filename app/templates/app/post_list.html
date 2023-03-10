@@ -1,20 +1,12 @@
-<!DOCTYPE html>
-    <html lang="pl">
-        <head>
-            <meta charset="UTF-8">
-            <title>Aplikacja</title>
-        </head>
-        <body>
-            <div>
-                <h1>Witaj w aplikacji</h1>
-                <h2>Poniżej będą pojawiać się nowe jej możliwości</h2>
-            </div>
-            {% for post in posts %}
-            <div>
+{% extends 'app/base.html' %}
+{% block content %} 
+    {% for post in posts %}
+        <div class="post">
+            <div class="date">
                 <p>Opublikowany: {{post.publish_date}}</p>
-                <h3><a href="">{{ post.title }}</a></h3>
-                <em>{{ post.text|linebreaksbr }}</em>
             </div>
-            {% endfor %}
-        </body>
-    </html>
+            <h3><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h3>
+            <em>{{ post.text|linebreaksbr }}</em><br><br>
+        </div>
+    {% endfor %}
+{% endblock %}
